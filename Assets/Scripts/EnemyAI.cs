@@ -7,20 +7,18 @@ public class EnemyAI : MonoBehaviour
 {
     [Header("Agent variables")]
     [SerializeField] private NavMeshAgent agent;
+    [SerializeField] private float seeingDistance;
     [SerializeField] private float speed;
     [SerializeField] private float turnSpeed;
     [Tooltip("This variable is to determine how far away the enemy can wonder from the current centre point")]
     [SerializeField] private float walkRange;
 
     [Header("Search and Attack parameters")]
-    [Tooltip("How far away can the enemy see the player from")]
-    [SerializeField] private float seeingDistance;
     [Tooltip("How far away can the enemy chase the player until giving up")]
     [SerializeField] private float stopChasingDistance;
     [SerializeField] private float attackDamage;
     [SerializeField] private float currentHealth;
-    [Tooltip("This changes the shape on the wire cube gizmos of the enemy sight")]
-    public Vector3 cubeVectors;
+    [SerializeField] private Transform seeingPoint;
     GameObject player;
 
     public enemyStates states;
@@ -73,29 +71,31 @@ public class EnemyAI : MonoBehaviour
         currentHealth -= damage;
         if (currentHealth <= 0)
         {
-            Destroy(gameObject);
+            agent.speed = 0;
+            agent.angularSpeed = 0;
+            animator.SetTrigger("Death");
         }
     }
 
     void CheckSeeingForPlayer()
     {
-        RaycastHit hit;
-        Physics.BoxCast(transform.position, cubeVectors, transform.forward, out hit, transform.localRotation, seeingDistance);
+        Collider[] hitCols = Physics.OverlapSphere(seeingPoint.transform.position, seeingDistance);
 
-        if (hit.collider != null)
+        foreach(Collider col in hitCols)
         {
-            if(hit.collider.tag == "Player")
+            if (col.tag == "Player")
             {
+                print("Seeing player");
                 isSeeingPlayer = true;
-                player = hit.collider.gameObject;
+                player = col.gameObject;
             }
         }
     }
 
     private void OnDrawGizmos()
     {
-        Gizmos.matrix = transform.localToWorldMatrix;
-        Gizmos.DrawWireCube(Vector3.forward * seeingDistance, cubeVectors);
+        //Gizmos.matrix = transform.localToWorldMatrix;
+        Gizmos.DrawWireSphere(seeingPoint.transform.position, seeingDistance);
     }
 
     private void OnTriggerStay(Collider other)
@@ -122,5 +122,10 @@ public class EnemyAI : MonoBehaviour
     {
         agent.speed = speed;
         agent.angularSpeed = turnSpeed;
+    }
+
+    public void Death()
+    {
+        Destroy(gameObject);
     }
 }
