@@ -13,10 +13,15 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private float walkRange;
 
     [Header("Search and Attack parameters")]
+    [Tooltip("How far away can the enemy see the player from")]
     [SerializeField] private float seeingDistance;
+    [Tooltip("How far away can the enemy chase the player until giving up")]
+    [SerializeField] private float stopChasingDistance;
     [SerializeField] private float attackDamage;
     [SerializeField] private float currentHealth;
+    [Tooltip("This changes the shape on the wire cube gizmos of the enemy sight")]
     public Vector3 cubeVectors;
+    GameObject player;
 
     public enemyStates states;
     public enum enemyStates
@@ -27,6 +32,9 @@ public class EnemyAI : MonoBehaviour
     }
 
     [SerializeField] bool isSeeingPlayer;
+
+    [Header("Animator parameters")]
+    [SerializeField] private Animator animator;
 
     private void Start()
     {
@@ -47,6 +55,15 @@ public class EnemyAI : MonoBehaviour
                 {
                     agent.destination = hit.position;
                 }
+            }
+        }
+        else if (isSeeingPlayer)
+        {
+            agent.destination = player.transform.position;
+
+            if(agent.remainingDistance >= stopChasingDistance)
+            {
+                isSeeingPlayer = false;
             }
         }
     }
@@ -70,7 +87,7 @@ public class EnemyAI : MonoBehaviour
             if(hit.collider.tag == "Player")
             {
                 isSeeingPlayer = true;
-                agent.destination = hit.collider.transform.position;
+                player = hit.collider.gameObject;
             }
         }
     }
@@ -79,6 +96,26 @@ public class EnemyAI : MonoBehaviour
     {
         Gizmos.matrix = transform.localToWorldMatrix;
         Gizmos.DrawWireCube(Vector3.forward * seeingDistance, cubeVectors);
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if(other.transform.tag == "Player")
+        {
+            animator.SetBool("Attacking", true);
+        }
+        else
+        {
+            animator.SetBool("Attacking", false);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.transform.tag == "Player")
+        {
+            animator.SetBool("Attacking", false);
+        }
     }
 
     void SetAgentParameters()

@@ -9,12 +9,17 @@ public class PlayerMovement : MonoBehaviour
 
     public Rigidbody rb;
 
-    Vector2 movement;
+    Vector3 movement;
+
+    public void FixedUpdate()
+    {
+        rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
+    }
 
     public void Update()
     {
         movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
+        movement.z = Input.GetAxisRaw("Vertical");
     }
 
 }
