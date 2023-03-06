@@ -645,6 +645,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1103814043
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1103814044}
+  m_Layer: 0
+  m_Name: Seeing Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1103814044
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103814043}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.33, z: 2.71}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1936325961}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1153432674
 GameObject:
   m_ObjectHideFlags: 0
@@ -760,6 +791,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 6
+  rotationspeed: 500
   rb: {fileID: 1323164960}
 --- !u!54 &1323164960
 Rigidbody:
@@ -842,7 +874,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 694269049580337368, guid: 4d39bcd57cb95e940b557398ab6043e6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1103814044}
   m_SourcePrefab: {fileID: 100100000, guid: 4d39bcd57cb95e940b557398ab6043e6, type: 3}
 --- !u!1 &1694865804
 GameObject:
@@ -1172,13 +1207,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 1936325956}
+  seeingDistance: 3
   speed: 3
   turnSpeed: 400
   walkRange: 10
-  seeingDistance: 2.5
+  stopChasingDistance: 10
   attackDamage: 20
   currentHealth: 150
-  cubeVectors: {x: 4, y: 4, z: 5}
+  seeingPoint: {fileID: 1103814044}
   states: 0
   isSeeingPlayer: 0
   animator: {fileID: 1936325958}
@@ -1200,6 +1236,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2, z: 1.5}
   m_Center: {x: 0, y: 1, z: 0.8}
+--- !u!4 &1936325961 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 694269049580337368, guid: 4d39bcd57cb95e940b557398ab6043e6, type: 3}
+  m_PrefabInstance: {fileID: 1590176277}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1994216297
 PrefabInstance:
   m_ObjectHideFlags: 0
