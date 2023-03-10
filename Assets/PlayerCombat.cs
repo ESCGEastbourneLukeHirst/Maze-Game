@@ -8,11 +8,20 @@ public class PlayerCombat : MonoBehaviour
     [Header("Attack Variables")]
     [SerializeField] private int maxSwordHold;
     [SerializeField] private int curSwordHold;
-    [SerializeField] private float damagePerSword;
     [SerializeField] private GameObject swordPrefab;
+    [SerializeField] private Transform swordSpawn;
+    [SerializeField] private AudioSource swordSource;
+
+    [Header("Other referances")]
+    public Animator animator;
 
     [Header("UI")]
     [SerializeField] private TextMeshProUGUI swordDisplay;
+
+    private void Start()
+    {
+        UpdateUI();
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -25,11 +34,19 @@ public class PlayerCombat : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && curSwordHold > 0)
+        {
+            animator.Play("PunchRight");
+        }
+    }
+
     public void UseSword()
     {
         curSwordHold--;
-        GameObject justThrownSword = Instantiate(swordPrefab, transform.forward, transform.rotation);
-        justThrownSword.GetComponent<Rigidbody>().AddForce(justThrownSword.transform.forward * 20, ForceMode.Force);
+        swordSource.Play();
+        Instantiate(swordPrefab, swordSpawn.position, swordSpawn.rotation);
         UpdateUI();
     }
 
