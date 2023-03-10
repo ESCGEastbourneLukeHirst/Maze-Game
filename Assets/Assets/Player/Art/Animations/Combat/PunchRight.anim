@@ -73895,7 +73895,7 @@ AnimationClip:
     functionName: ForceStopMovement
     data: 
     objectReferenceParameter: {fileID: 0}
-    floatParameter: 3
+    floatParameter: 1
     intParameter: 0
     messageOptions: 0
   - time: 0.53333336

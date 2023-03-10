@@ -18,7 +18,7 @@ public class SwordLogic : MonoBehaviour
     {
         if(collision.collider.tag == "Enemy")
         {
-            collision.transform.GetComponent<Rigidbody>();
+            collision.transform.GetComponent<EnemyAI>().TakeDamage(damageDone);
             Die();
         }
         else

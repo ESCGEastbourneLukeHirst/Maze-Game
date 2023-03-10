@@ -1,12 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
     public Animator animator;
     public float speed = 6f;
     public float rotationspeed = 6f;
+
+    public float curHealth;
+    public SliderJoint2D healthSlider;
 
     public Rigidbody rb;
 
@@ -64,5 +69,18 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public void Death()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void TakeDamage(float damage)
+    {
+        curHealth -= damage;
+        if(curHealth < 0)
+        {
+            animator.SetTrigger("Death");
+        }
+    }
 
 }

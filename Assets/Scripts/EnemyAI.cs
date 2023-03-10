@@ -111,6 +111,19 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    void Attack()
+    {
+        Collider[] playerCol = Physics.OverlapSphere(seeingPoint.transform.position, 2f);
+
+        foreach (Collider col in playerCol)
+        {
+            if (col.tag == "Player")
+            {
+                col.transform.GetComponent<PlayerMovement>().TakeDamage(attackDamage);
+            }
+        }
+    }
+
     public void PlayAttackAudio()
     {
         attackSound.Play();
