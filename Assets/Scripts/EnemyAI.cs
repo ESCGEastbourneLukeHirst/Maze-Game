@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private float stopChasingDistance;
     [SerializeField] private float attackDamage;
     [SerializeField] private float currentHealth;
+    [SerializeField] private Slider healthSlider;
     [SerializeField] private Transform seeingPoint;
     GameObject player;
 
@@ -42,6 +44,8 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
+        healthSlider.value = currentHealth;
+
         CheckSeeingForPlayer();
 
         if (!isSeeingPlayer)
@@ -111,7 +115,7 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    void Attack()
+    public void Attack()
     {
         Collider[] playerCol = Physics.OverlapSphere(seeingPoint.transform.position, 2f);
 
