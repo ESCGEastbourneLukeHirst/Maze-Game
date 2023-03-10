@@ -141,6 +141,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0561a886315da5f44a241aef51cab7b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwPower: 10
+  throwPower: 0.5
   damageDone: 30
   rb: {fileID: 7998079666362499793}
