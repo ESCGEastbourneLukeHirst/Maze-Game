@@ -3758,7 +3758,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8157430642170773886, guid: 993ace14ccd87bd4f80f2a0ceccd3225, type: 3}
       propertyPath: speed
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8157430642170773886, guid: 993ace14ccd87bd4f80f2a0ceccd3225, type: 3}
       propertyPath: attackSound

@@ -79,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
     public void TakeDamage(float damage)
     {
         curHealth -= damage;
-        if(curHealth < 0)
+        if(curHealth <= 0)
         {
             animator.SetTrigger("Death");
         }
