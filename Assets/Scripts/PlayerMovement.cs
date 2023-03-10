@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-
+    public Animator animator;
     public float speed = 6f;
     public float rotationspeed = 6f;
 
@@ -12,17 +12,47 @@ public class PlayerMovement : MonoBehaviour
 
     Vector3 movement;
 
-    public void FixedUpdate()
+    float horizontal;
+    float vertical;
+    [SerializeField] private bool canMove;
+
+    private void Start()
     {
-        rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
+        canMove = true;
     }
+
+    public IEnumerator ForceStopMovement(float waitSecs)
+    {
+        horizontal = 0;
+        vertical = 0;
+        canMove = false;
+
+        yield return new WaitForSeconds(waitSecs);
+
+        canMove = true;
+    }
+
     public void Update()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
+        if(!canMove)
+            return;
 
-        Vector3 movement = new Vector3(horizontal, 0, vertical);
+        rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
+
+        horizontal = Input.GetAxis("Horizontal");
+        vertical = Input.GetAxis("Vertical");
+
+        movement = new Vector3(horizontal, 0, vertical);
         movement.Normalize();
+
+        if(movement != Vector3.zero)
+        {
+            animator.SetBool("Walking", true);
+        }
+        else if (movement == Vector3.zero)
+        {
+            animator.SetBool("Walking", false);
+        }
 
         transform.Translate(movement * speed * Time.deltaTime, Space.World);
 
