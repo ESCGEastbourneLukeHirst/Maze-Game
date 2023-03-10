@@ -33,6 +33,7 @@ public class EnemyAI : MonoBehaviour
 
     [Header("Animator parameters")]
     [SerializeField] private Animator animator;
+    [SerializeField] private AudioSource attackSound;
 
     private void Start()
     {
@@ -108,6 +109,11 @@ public class EnemyAI : MonoBehaviour
         {
             animator.SetBool("Attacking", false);
         }
+    }
+
+    public void PlayAttackAudio()
+    {
+        attackSound.Play();
     }
 
     private void OnTriggerExit(Collider other)
