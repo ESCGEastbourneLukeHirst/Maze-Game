@@ -29,8 +29,11 @@ public class PlayerCombat : MonoBehaviour
         {
             if(collision.collider.tag == "Supply")
             {
+                if (curSwordHold < maxSwordHold)
+                {
+                    Destroy(collision.gameObject);
+                }
                 AddSwordToPack();
-                Destroy(collision.gameObject);
             }
         }
     }
