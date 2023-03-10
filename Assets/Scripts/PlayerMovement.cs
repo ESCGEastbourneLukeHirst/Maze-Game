@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public float rotationspeed = 6f;
 
     public float curHealth;
-    public SliderJoint2D healthSlider;
+    public Slider healthSlider;
 
     public Rigidbody rb;
 
@@ -39,6 +39,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void Update()
     {
+        healthSlider.value = curHealth;
+
         if(!canMove)
             return;
 
