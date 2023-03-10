@@ -30,7 +30,6 @@ public class PlayerCombat : MonoBehaviour
             if(collision.collider.tag == "Supply")
             {
                 AddSwordToPack();
-                Destroy(collision.transform);
             }
         }
     }
