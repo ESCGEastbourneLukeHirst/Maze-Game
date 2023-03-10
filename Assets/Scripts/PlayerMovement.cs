@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-
+    public Animator animator;
     public float speed = 6f;
     public float rotationspeed = 6f;
 
@@ -23,6 +23,15 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 movement = new Vector3(horizontal, 0, vertical);
         movement.Normalize();
+
+        if(movement != Vector3.zero)
+        {
+            animator.SetBool("Walking", true);
+        }
+        else if (movement == Vector3.zero)
+        {
+            animator.SetBool("Walking", false);
+        }
 
         transform.Translate(movement * speed * Time.deltaTime, Space.World);
 

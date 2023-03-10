@@ -15,7 +15,7 @@ public class Spawning : MonoBehaviour
 
     void Spawner()
     {
-        for (int i = 0; i < 10;)
+        for (int i = 0; i < spawnPoints.Length;)
         {
             Instantiate(Object, spawnPoints[i].position, spawnPoints[i].rotation);
             i++;
