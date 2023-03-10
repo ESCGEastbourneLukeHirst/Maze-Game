@@ -11620,8 +11620,11 @@ Transform:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
+>>>>>>> 38e06100331542d73a1b0b15b250ce23d19585d4
+=======
 >>>>>>> 38e06100331542d73a1b0b15b250ce23d19585d4
   m_LocalRotation: {x: -0.020834723, y: 0.76241755, z: -0.034256365, w: -0.645842}
   m_LocalPosition: {x: 240.61, y: 9.4, z: 15.72}
@@ -11634,11 +11637,17 @@ Transform:
   m_LocalPosition: {x: 199.22, y: 6.57, z: 7.18}
 >>>>>>> ae1a7e4d9dd5e3d3215df8a3b668f6152ccb2247
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 38e06100331542d73a1b0b15b250ce23d19585d4
 =======
   m_LocalRotation: {x: 0.0074237906, y: -0.37412074, z: 0.019754605, w: -0.9271399}
   m_LocalPosition: {x: 199.22, y: 6.57, z: 7.18}
 >>>>>>> ae1a7e4d9dd5e3d3215df8a3b668f6152ccb2247
+<<<<<<< HEAD
+>>>>>>> 38e06100331542d73a1b0b15b250ce23d19585d4
+=======
 >>>>>>> 38e06100331542d73a1b0b15b250ce23d19585d4
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -11648,8 +11657,11 @@ Transform:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
+>>>>>>> 38e06100331542d73a1b0b15b250ce23d19585d4
+=======
 >>>>>>> 38e06100331542d73a1b0b15b250ce23d19585d4
   m_LocalEulerAnglesHint: {x: 4.54, y: 260.564, z: 0.717}
 =======
@@ -11657,6 +11669,12 @@ Transform:
 >>>>>>> ae1a7e4d9dd5e3d3215df8a3b668f6152ccb2247
 =======
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+  m_LocalEulerAnglesHint: {x: 0.058, y: 403.949, z: -2.418}
+>>>>>>> ae1a7e4d9dd5e3d3215df8a3b668f6152ccb2247
+=======
+>>>>>>> 38e06100331542d73a1b0b15b250ce23d19585d4
 =======
   m_LocalEulerAnglesHint: {x: 0.058, y: 403.949, z: -2.418}
 >>>>>>> ae1a7e4d9dd5e3d3215df8a3b668f6152ccb2247
